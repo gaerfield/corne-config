@@ -14,3 +14,4 @@
 
 * [tour of ergo split keyboards](https://getreuer.info/posts/keyboards/tour/index.html)
 * [train typing on keybr.com](https://www.keybr.com/de/index)
+* [glossary regarding typical terms](https://getreuer.info/posts/keyboards/glossary/index.html)
