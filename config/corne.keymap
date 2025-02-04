@@ -16,10 +16,12 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <250>;
             quick-tap-ms = <175>;
             hold-trigger-on-release;
-            flavor = "tap-preferred";
+            flavor = "balanced";
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <1 2 3 4 5 13 14 15 16 17 25 26 27 28 29>;
         };
 
         HML: HML {
@@ -28,10 +30,12 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <280>;
             quick-tap-ms = <175>;
-            flavor = "tap-preferred";
+            flavor = "balanced";
             hold-trigger-on-release;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <6 7 9 8 10 22 20 21 33 32 19 18 30 31 34>;
         };
     };
 
