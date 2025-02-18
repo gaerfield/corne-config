@@ -83,10 +83,10 @@
 
             display-name = "symbol";
             bindings = <
-&kp TAB    &kp SQT          &kp LESS_THAN  &kp GREATER_THAN  &kp DOUBLE_QUOTES  &kp PERIOD    &kp AMPERSAND  &trans      &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp PERCENT   &kp BSPC
-&kp LCTRL  &kp EXCLAMATION  &kp MINUS      &kp PLUS          &kp EQUAL          &kp HASH      &kp PIPE       &kp COLON   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp QUESTION  &trans
-&kp LSHFT  &kp CARET        &kp SLASH      &kp ASTERISK      &kp BACKSLASH      &trans        &kp TILDE      &kp DOLLAR  &kp LBRC              &kp RBRC               &kp AT_SIGN   &trans
-                                           &kp LGUI          &trans             &kp SPACE     &kp RET        &trans      &kp RALT
+&trans  &kp SQT        &kp UNDERSCORE  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp CARET       &kp EXCLAMATION  &kp LESS_THAN         &kp GREATER_THAN       &kp EQUAL         &kp AMPERSAND  &trans
+&trans  &kp BACKSLASH  &kp SLASH       &kp LEFT_BRACE    &kp RIGHT_BRACE    &kp ASTERISK    &kp QUESTION     &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp MINUS         &kp COLON      &trans
+&trans  &kp HASH       &kp DOLLAR      &kp PIPE          &kp TILDE          &kp GRAVE       &kp PLUS         &kp PERCENT           &kp DOUBLE_QUOTES      &kp SINGLE_QUOTE  &kp SEMI       &trans
+                                       &trans            &trans             &trans          &trans           &trans                &trans
             >;
         };
 
