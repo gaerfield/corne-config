@@ -45,6 +45,28 @@
         };
     };
 
+    combos {
+        compatible = "zmk,combos";
+
+        type_oe {
+            bindings = <&output_oe>;
+            key-positions = <9 3>;
+        };
+    };
+
+    macros {
+        output_oe: macro_press {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&output_oe &kp LEFT_ALT &kp N0 &kp N3 &kp N0 &kp N8>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "MACRO_PRESS";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
