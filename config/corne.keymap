@@ -66,9 +66,9 @@
 
             display-name = "Nav";
             bindings = <
-&trans  &kp PAGE_UP  &kp BACKSPACE   &kp UP_ARROW  &kp DELETE    &kp PAGE_DOWN    &kp PERIOD    &kp N7               &kp N8          &kp N9                   &kp MINUS            &trans
-&trans  &kp HOME     &kp LEFT_ARROW  &kp DOWN      &kp RIGHT     &kp END          &kp NUMBER_0  &HMR RCTRL NUMBER_4  &HMR RSHIFT N5  &HMR RIGHT_ALT NUMBER_6  &HMR RIGHT_GUI PLUS  &trans
-&trans  &kp K_CUT    &kp K_COPY      &kp K_PASTE   &kp C_REPEAT  &kp K_UNDO       &kp COMMA     &kp NUMBER_1         &kp NUMBER_2    &kp NUMBER_3             &none                &trans
+&trans  &kp PAGE_UP  &kp BACKSPACE   &kp UP_ARROW  &kp DELETE    &kp PAGE_DOWN    &kp PERIOD    &kp N7               &kp N8          &kp N9                   &kp KP_MINUS            &trans
+&trans  &kp HOME     &kp LEFT_ARROW  &kp DOWN      &kp RIGHT     &kp END          &kp NUMBER_0  &HMR RCTRL NUMBER_4  &HMR RSHIFT N5  &HMR RIGHT_ALT NUMBER_6  &HMR RIGHT_GUI KP_PLUS  &trans
+&trans  &kp K_CUT    &kp K_COPY      &kp K_PASTE   &kp C_REPEAT  &kp K_UNDO       &kp COMMA     &kp NUMBER_1         &kp NUMBER_2    &kp NUMBER_3             &none                   &trans
                                      &trans        &trans        &trans           &trans        &trans               &trans
             >;
         };
