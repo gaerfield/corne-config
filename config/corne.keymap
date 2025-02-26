@@ -51,6 +51,7 @@
         type_oe {
             bindings = <&output_oe>;
             key-positions = <9 3>;
+            layers = <0>;
         };
     };
 
