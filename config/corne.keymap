@@ -206,13 +206,15 @@
 &trans   &trans  &trans  &trans  &trans  &trans    &trans     &trans   &trans  &trans   &trans  &trans
                          &trans  &trans  &trans    &trans     &trans   &trans
             >;
+
+            label = "media";
         };
     };
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
 
-        lowerAndRaise {
+        enter-media {
             if-layers = <1 2>;
             then-layer = <3>;
         };
