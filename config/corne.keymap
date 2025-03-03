@@ -49,22 +49,75 @@
         compatible = "zmk,combos";
 
         combo_oe {
-            bindings = <&macro_oe>;
+            bindings = <&macro_insert_unicode>;
             key-positions = <23 9>;
         };
     };
 
     macros {
-        macro_oe: macro_press {
+        macro_insert_unicode: macro_press {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
                 <&macro_press>,
-                <&kp LEFT_ALT &kp N0 &kp N3 &kp N0 &kp N8>,
+                <&kp LEFT_ALT>,
+                <&macro_press>,
+                <&kp LEFT_SHIFT>,
+                <&macro_release>,
+                <&kp LEFT_SHIFT>,
                 <&macro_release>,
                 <&kp LALT>;
 
             label = "MACRO_PRESS";
+        };
+
+        macro_oe: macro_oe {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_insert_unicode &kp N0 &kp N0 &kp F &kp N6 &kp SPACE>;
+            label = "MACRO_OE";
+        };
+
+        macro_upper_oe: macro_upper_oe {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_insert_unicode &kp N0 &kp N0 &kp D &kp N6 &kp SPACE>;
+            label = "MACRO_UPPER_OE";
+        };
+
+        macro_ae: macro_ae {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp N0 &kp N0 &kp E &kp N4 &kp SPACE>;
+            label = "MACRO_AE";
+        };
+
+        macro_upper_ae: macro_upper_ae {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp N0 &kp N0 &kp C &kp N4 &kp SPACE>;
+            label = "MACRO_UPPER_AE";
+        };
+
+        macro_ue: macro_oe {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp N0 &kp N0 &kp F &kp C &kp SPACE>;
+            label = "MACRO_OE";
+        };
+
+        macro_upper_ue: macro_upper_oe {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp N0 &kp N0 &kp D &kp C &kp SPACE>;
+            label = "MACRO_UPPER_OE";
+        };
+
+        macro_sz: macro_sz {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp N0 &kp N0 &kp D &kp F &kp SPACE>;
+            label = "MACRO_SZ";
         };
     };
 
@@ -116,6 +169,15 @@
 &trans  &HML LEFT_GUI BACKSLASH  &HML LEFT_ALT SLASH  &HML LSHFT LEFT_BRACE  &HML LEFT_CONTROL RIGHT_BRACE  &kp ASTERISK    &kp QUESTION     &HMR RCTRL LEFT_PARENTHESIS  &HMR RSHFT RIGHT_PARENTHESIS  &HMR RIGHT_ALT MINUS  &HMR RIGHT_GUI COLON  &trans
 &trans  &kp HASH                 &kp DOLLAR           &kp PIPE               &kp TILDE                      &kp GRAVE       &kp PLUS         &kp PERCENT                  &kp DOUBLE_QUOTES             &kp SINGLE_QUOTE      &kp SEMI              &trans
                                                       &trans                 &trans                         &trans          &trans           &trans                       &trans
+            >;
+        };
+
+        media {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
     };
