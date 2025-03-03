@@ -82,7 +82,7 @@
     };
 
     macros {
-        macro_insert_unicode: macro_press {
+        macro_insert_unicode: macro_insert_unicode {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -95,7 +95,7 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "MACRO_PRESS";
+            label = "MACRO_INSERT_UNICODE";
         };
 
         macro_oe: macro_oe {
@@ -126,18 +126,18 @@
             label = "MACRO_UPPER_AE";
         };
 
-        macro_ue: macro_oe {
+        macro_ue: macro_ue {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&none &kp N0 &kp N0 &kp F &kp C &kp SPACE>;
-            label = "MACRO_OE";
+            label = "MACRO_UE";
         };
 
-        macro_upper_ue: macro_upper_oe {
+        macro_upper_ue: macro_upper_ue {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&none &kp N0 &kp N0 &kp D &kp C &kp SPACE>;
-            label = "MACRO_UPPER_OE";
+            label = "MACRO_UPPER_UE";
         };
 
         macro_sz: macro_sz {
