@@ -43,6 +43,33 @@
             #binding-cells = <0>;
             bindings = <&kp TAB>, <&kp LS(TAB)>;
         };
+
+        mod_oe: mod_oe {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MOD_OE";
+            bindings = <&macro_oe>, <&macro_upper_oe>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mod_ae: mod_ae {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MOD_AE";
+            bindings = <&macro_ae>, <&macro_upper_ae>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mod_ue: mod_ue {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MOD_UE";
+            bindings = <&macro_ue>, <&macro_upper_ue>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 
     combos {
@@ -174,10 +201,10 @@
 
         media {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans    &trans  &trans  &trans
+&trans   &trans  &trans  &trans  &trans  &trans    &macro_sz  &mod_ue  &trans  &mod_oe  &trans  &trans
+&mod_ae  &trans  &trans  &trans  &trans  &trans    &trans     &trans   &trans  &trans   &trans  &trans
+&trans   &trans  &trans  &trans  &trans  &trans    &trans     &trans   &trans  &trans   &trans  &trans
+                         &trans  &trans  &trans    &trans     &trans   &trans
             >;
         };
     };
