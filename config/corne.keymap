@@ -89,7 +89,7 @@
                 <&macro_press>,
                 <&kp LEFT_ALT>,
                 <&macro_press>,
-                <&kp LEFT_SHIFT>,
+                <&kp LEFT_SHIFT &kp U>,
                 <&macro_release>,
                 <&kp LEFT_SHIFT>,
                 <&macro_release>,
@@ -115,35 +115,35 @@
         macro_ae: macro_ae {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none &kp N0 &kp N0 &kp E &kp N4 &kp SPACE>;
+            bindings = <&macro_insert_unicode &kp N0 &kp N0 &kp E &kp N4 &kp SPACE>;
             label = "MACRO_AE";
         };
 
         macro_upper_ae: macro_upper_ae {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none &kp N0 &kp N0 &kp C &kp N4 &kp SPACE>;
+            bindings = <&macro_insert_unicode &kp N0 &kp N0 &kp C &kp N4 &kp SPACE>;
             label = "MACRO_UPPER_AE";
         };
 
         macro_ue: macro_ue {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none &kp N0 &kp N0 &kp F &kp C &kp SPACE>;
+            bindings = <&macro_insert_unicode &kp N0 &kp N0 &kp F &kp C &kp SPACE>;
             label = "MACRO_UE";
         };
 
         macro_upper_ue: macro_upper_ue {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none &kp N0 &kp N0 &kp D &kp C &kp SPACE>;
+            bindings = <&macro_insert_unicode &kp N0 &kp N0 &kp D &kp C &kp SPACE>;
             label = "MACRO_UPPER_UE";
         };
 
         macro_sz: macro_sz {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none &kp N0 &kp N0 &kp D &kp F &kp SPACE>;
+            bindings = <&macro_insert_unicode &kp N0 &kp N0 &kp D &kp F &kp SPACE>;
             label = "MACRO_SZ";
         };
     };
