@@ -72,14 +72,7 @@
         };
     };
 
-    combos {
-        compatible = "zmk,combos";
-
-        combo_oe {
-            bindings = <&macro_insert_unicode>;
-            key-positions = <23 9>;
-        };
-    };
+    combos { compatible = "zmk,combos"; };
 
     macros {
         macro_insert_unicode: macro_insert_unicode {
@@ -201,10 +194,10 @@
 
         media {
             bindings = <
-&trans   &trans  &trans  &trans  &trans  &trans    &macro_sz  &mod_ue  &trans  &mod_oe  &trans  &trans
-&mod_ae  &trans  &trans  &trans  &trans  &trans    &trans     &trans   &trans  &trans   &trans  &trans
-&trans   &trans  &trans  &trans  &trans  &trans    &trans     &trans   &trans  &trans   &trans  &trans
-                         &trans  &trans  &trans    &trans     &trans   &trans
+&trans   &trans  &trans          &trans            &kp C_VOLUME_UP    &kp C_BRIGHTNESS_INC    &macro_sz  &mod_ue  &trans  &mod_oe  &trans  &trans
+&mod_ae  &trans  &trans          &trans            &kp C_VOLUME_DOWN  &kp C_BRIGHTNESS_DEC    &trans     &trans   &trans  &trans   &trans  &trans
+&trans   &trans  &kp C_PREVIOUS  &kp C_PLAY_PAUSE  &kp C_NEXT         &trans                  &trans     &trans   &trans  &trans   &trans  &trans
+                                 &trans            &trans             &trans                  &trans     &trans   &trans
             >;
 
             label = "media";
