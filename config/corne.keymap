@@ -5,49 +5,104 @@
  */
 
 #include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    behaviors {
+        HMR: HMR {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMR";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            hold-trigger-on-release;
+            flavor = "tap-preferred";
+        };
+
+        HML: HML {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HML";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            flavor = "tap-preferred";
+            hold-trigger-on-release;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-            display-name = "base";
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
+            // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
+            // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
+            //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+
+            display-name = "Base";
             bindings = <
-&trans    &trans  &trans  &trans     &trans  &trans        &trans    &trans  &trans      &trans    &trans     &trans
-&mo 3      &trans  &trans  &trans     &trans  &trans        &trans    &trans  &trans      &trans    &trans  &trans
-&trans  &trans  &trans  &trans     &trans  &trans        &trans    &trans  &trans  &trans  &trans  &trans
-                         &trans  &mo 1  &trans    &trans  &mo 2  &trans
+&kp TAB       &kp Q            &kp W            &kp E              &kp R         &kp T        &kp Y    &kp U         &kp I               &kp O             &kp P                &kp BSPC
+&kp LEFT_GUI  &HML LEFT_GUI A  &HML LEFT_ALT S  &HML LEFT_SHIFT D  &HML LCTRL F  &kp G        &kp H    &HMR RCTRL J  &HMR RIGHT_SHIFT K  &HMR RIGHT_ALT L  &HMR RGUI SEMICOLON  &kp SQT
+&kp LSHFT     &kp Z            &kp X            &kp C              &kp V         &kp B        &kp N    &kp M         &kp COMMA           &kp DOT           &kp FSLH             &kp ESC
+                                                &mo 3              &mo 1         &kp SPACE    &kp RET  &mo 2         &mo 4
             >;
         };
 
-        nav_layer {
-            display-name = "nav";
+        nav {
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
+            // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
+            // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
+            //                    | GUI |     | SPC |   | ENT |     | ALT |
+
+            display-name = "Nav";
             bindings = <
-&trans    &trans        &trans        &trans        &trans        &trans          &trans    &trans    &trans    &trans     &trans  &trans
-&trans     &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans    &trans  &trans  &trans
-&trans  &trans        &trans        &trans        &trans        &trans          &trans    &trans    &trans    &trans     &trans  &trans
-                                       &trans      &trans        &trans       &trans   &trans    &trans
+&kp TAB     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6    &kp N7    &kp N8    &kp N9     &kp N0  &kp BSPC
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
+&kp LSHFT   &trans        &trans        &trans        &trans        &trans          &trans    &trans    &trans    &trans     &trans  &trans
+                                        &kp LGUI      &trans        &kp SPACE       &kp RET   &trans    &kp RALT
             >;
         };
 
-        symbol_layer {
+        symbol {
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
+            // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
+            // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
+            //                    | GUI |     | SPC |   | ENT |     | ALT |
+
             display-name = "symbol";
             bindings = <
-&trans    &trans  &trans  &trans  &trans  &trans    &trans  &trans   &trans  &trans  &trans
-&trans     &trans    &trans  &trans    &trans    &trans       &trans  &trans  &trans         &trans  &trans  &trans
-&trans  &trans    &trans  &trans    &trans    &trans       &trans  &trans   &trans         &trans  &trans  &trans
-                             &trans  &trans    &trans    &trans    &trans     &trans
+&kp TAB    &kp SQT          &kp LESS_THAN  &kp GREATER_THAN  &kp DOUBLE_QUOTES  &kp PERIOD    &kp AMPERSAND  &trans      &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp PERCENT   &kp BSPC
+&kp LCTRL  &kp EXCLAMATION  &kp MINUS      &kp PLUS          &kp EQUAL          &kp HASH      &kp PIPE       &kp COLON   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp QUESTION  &trans
+&kp LSHFT  &kp CARET        &kp SLASH      &kp ASTERISK      &kp BACKSLASH      &trans        &kp TILDE      &kp DOLLAR  &kp LBRC              &kp RBRC               &kp AT_SIGN   &trans
+                                           &kp LGUI          &trans             &kp SPACE     &kp RET        &trans      &kp RALT
             >;
         };
 
-        media_layer {
+        window {
+            display-name = "window";
+            bindings = <
+&kp TAB     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6    &kp N7    &kp N8    &kp N9     &kp N0  &kp BSPC
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
+&kp LSHFT   &trans        &trans        &trans        &trans        &trans          &trans    &trans    &trans    &trans     &trans  &trans
+                                        &kp LGUI      &trans        &kp SPACE       &kp RET   &trans    &kp RALT
+            >;
+        };
+
+        media {
             display-name = "media";
             bindings = <
-&trans    &trans  &trans  &trans  &trans  &trans    &trans  &trans   &trans  &trans  &trans
-&trans     &trans    &trans  &trans    &trans    &trans       &trans  &trans  &trans         &trans  &trans  &trans
-&trans  &trans    &trans  &trans    &trans    &trans       &trans  &trans   &trans         &trans  &trans  &trans
-                             &trans  &trans    &trans    &trans    &trans     &trans
+&kp TAB     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6    &kp N7    &kp N8    &kp N9     &kp N0  &kp BSPC
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
+&kp LSHFT   &trans        &trans        &trans        &trans        &trans          &trans    &trans    &trans    &trans     &trans  &trans
+                                        &kp LGUI      &trans        &kp SPACE       &kp RET   &trans    &kp RALT
             >;
         };
     };
@@ -55,7 +110,7 @@
     conditional_layers {
         compatible = "zmk,conditional-layers";
 
-        switch_media {
+        lowerAndRaise {
             if-layers = <1 2>;
             then-layer = <3>;
         };
