@@ -141,16 +141,19 @@
         };
     };
 
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        switch_media {
+            if-layers = <1 2>;
+            then-layer = <3>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-            // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-            // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-            //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
-
             display-name = "Base";
             bindings = <
 &TabMod    &kp Q            &kp W            &kp E              &kp R         &kp T        &kp Z    &kp U         &kp I               &kp O             &kp P                &kp BSPC
@@ -161,12 +164,6 @@
         };
 
         nav {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-            // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-            // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
-
             display-name = "Nav";
             bindings = <
 &trans  &kp PAGE_UP  &kp BACKSPACE   &kp UP_ARROW  &kp DELETE    &kp PAGE_DOWN    &kp PERIOD    &kp N7               &kp N8          &kp N9                   &kp KP_MINUS            &trans
@@ -177,12 +174,6 @@
         };
 
         symbol {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-            // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-            // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
-
             display-name = "symbol";
             bindings = <
 &trans  &kp AT                   &kp UNDERSCORE       &kp LEFT_BRACKET       &kp RIGHT_BRACKET              &kp CARET       &kp EXCLAMATION  &kp LESS_THAN                &kp GREATER_THAN              &kp EQUAL             &kp AMPERSAND         &trans
@@ -193,23 +184,14 @@
         };
 
         media {
+            display-name = "media";
             bindings = <
 &trans  &trans  &trans          &trans            &kp C_BRIGHTNESS_INC  &kp C_VOL_UP         &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans          &trans            &kp C_BRIGHTNESS_DEC  &kp C_VOLUME_DOWN    &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &kp C_PREVIOUS  &kp C_PLAY_PAUSE  &kp C_NEXT            &kp C_MUTE           &trans  &trans  &trans  &trans  &trans  &trans
                                 &trans            &trans                &trans               &trans  &trans  &trans
             >;
-
-            label = "media";
         };
     };
-
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-
-        switch_media {
-            if-layers = <1 2>;
-            then-layer = <3>;
-        };
-    };
+    
 };
