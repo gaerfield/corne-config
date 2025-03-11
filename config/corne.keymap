@@ -45,30 +45,24 @@
         };
 
         mod_oe: mod_oe {
-            compatible = "zmk,behavior-mod-morph";
+            compatible = "zmk,behavior-tap-dance";
             label = "MOD_OE";
+            #binding-cells = <0>;
             bindings = <&macro_oe>, <&macro_upper_oe>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        mod_ae: mod_ae {
-            compatible = "zmk,behavior-mod-morph";
-            label = "MOD_AE";
-            bindings = <&macro_ae>, <&macro_upper_ae>;
-
-            #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         mod_ue: mod_ue {
-            compatible = "zmk,behavior-mod-morph";
+            compatible = "zmk,behavior-tap-dance";
             label = "MOD_UE";
-            bindings = <&macro_ue>, <&macro_upper_ue>;
-
             #binding-cells = <0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            bindings = <&macro_ue>, <&macro_upper_ue>;
+        };
+
+        mod_ae: mod_ae {
+            compatible = "zmk,behavior-tap-dance";
+            label = "MOD_AE";
+            #binding-cells = <0>;
+            bindings = <&macro_ae>, <&macro_upper_ae>;
         };
     };
 
@@ -143,7 +137,7 @@
         macro_euro: macro_euro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&none &kp N2 &kp N0 &kp A &kp C &kp SPACE>;
+            bindings = <&macro_insert_unicode &kp N2 &kp N0 &kp A &kp C &kp SPACE>;
             label = "MACRO_EURO";
         };
     };
