@@ -80,13 +80,13 @@
             #binding-cells = <0>;
             bindings =
                 <&macro_press>,
-                <&kp LEFT_ALT>,
+                <&kp LCTRL>,
                 <&macro_press>,
                 <&kp LEFT_SHIFT &kp U>,
                 <&macro_release>,
                 <&kp LEFT_SHIFT>,
                 <&macro_release>,
-                <&kp LALT>;
+                <&kp LCTRL>;
 
             label = "MACRO_INSERT_UNICODE";
         };
@@ -139,6 +139,13 @@
             bindings = <&macro_insert_unicode &kp N0 &kp N0 &kp D &kp F &kp SPACE>;
             label = "MACRO_SZ";
         };
+
+        macro_euro: macro_euro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none &kp N2 &kp N0 &kp A &kp C &kp SPACE>;
+            label = "MACRO_EURO";
+        };
     };
 
     conditional_layers {
@@ -186,7 +193,7 @@
         media {
             display-name = "media";
             bindings = <
-&trans  &trans   &trans          &trans            &kp C_BRIGHTNESS_INC  &kp C_VOL_UP         &macro_sz  &mod_ue  &trans  &mod_oe  &trans  &trans
+&trans  &trans   &trans          &macro_euro       &kp C_BRIGHTNESS_INC  &kp C_VOL_UP         &macro_sz  &mod_ue  &trans  &mod_oe  &trans  &trans
 &trans  &mod_ae  &trans          &trans            &kp C_BRIGHTNESS_DEC  &kp C_VOLUME_DOWN    &trans     &trans   &trans  &trans   &trans  &trans
 &trans  &trans   &kp C_PREVIOUS  &kp C_PLAY_PAUSE  &kp C_NEXT            &kp C_MUTE           &trans     &trans   &trans  &trans   &trans  &trans
                                  &trans            &trans                &trans               &trans     &trans   &trans
