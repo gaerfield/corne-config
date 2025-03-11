@@ -5,7 +5,6 @@
  */
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 
 / {
@@ -16,10 +15,12 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <250>;
             quick-tap-ms = <175>;
             hold-trigger-on-release;
-            flavor = "tap-preferred";
+            flavor = "balanced";
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <1 2 3 4 5 13 14 15 16 17 25 26 27 28 29>;
         };
 
         HML: HML {
@@ -28,10 +29,124 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <280>;
             quick-tap-ms = <175>;
-            flavor = "tap-preferred";
+            flavor = "balanced";
             hold-trigger-on-release;
+            require-prior-idle-ms = <150>;
+            hold-trigger-key-positions = <6 7 9 8 10 22 20 21 33 32 19 18 30 31 34>;
+        };
+
+        TabMod: TabMod {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TABMOD";
+            #binding-cells = <0>;
+            bindings = <&kp TAB>, <&kp LS(TAB)>;
+        };
+
+        mod_oe: mod_oe {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MOD_OE";
+            bindings = <&macro_oe>, <&macro_upper_oe>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mod_ae: mod_ae {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MOD_AE";
+            bindings = <&macro_ae>, <&macro_upper_ae>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mod_ue: mod_ue {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MOD_UE";
+            bindings = <&macro_ue>, <&macro_upper_ue>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+    };
+
+    combos { compatible = "zmk,combos"; };
+
+    macros {
+        macro_insert_unicode: macro_insert_unicode {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_ALT>,
+                <&macro_press>,
+                <&kp LEFT_SHIFT &kp U>,
+                <&macro_release>,
+                <&kp LEFT_SHIFT>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "MACRO_INSERT_UNICODE";
+        };
+
+        macro_oe: macro_oe {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_insert_unicode &kp N0 &kp N0 &kp F &kp N6 &kp SPACE>;
+            label = "MACRO_OE";
+        };
+
+        macro_upper_oe: macro_upper_oe {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_insert_unicode &kp N0 &kp N0 &kp D &kp N6 &kp SPACE>;
+            label = "MACRO_UPPER_OE";
+        };
+
+        macro_ae: macro_ae {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_insert_unicode &kp N0 &kp N0 &kp E &kp N4 &kp SPACE>;
+            label = "MACRO_AE";
+        };
+
+        macro_upper_ae: macro_upper_ae {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_insert_unicode &kp N0 &kp N0 &kp C &kp N4 &kp SPACE>;
+            label = "MACRO_UPPER_AE";
+        };
+
+        macro_ue: macro_ue {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_insert_unicode &kp N0 &kp N0 &kp F &kp C &kp SPACE>;
+            label = "MACRO_UE";
+        };
+
+        macro_upper_ue: macro_upper_ue {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_insert_unicode &kp N0 &kp N0 &kp D &kp C &kp SPACE>;
+            label = "MACRO_UPPER_UE";
+        };
+
+        macro_sz: macro_sz {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_insert_unicode &kp N0 &kp N0 &kp D &kp F &kp SPACE>;
+            label = "MACRO_SZ";
+        };
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        switch_media {
+            if-layers = <1 2>;
+            then-layer = <3>;
         };
     };
 
@@ -39,80 +154,44 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-            // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-            // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-            //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
-
             display-name = "Base";
             bindings = <
-&kp TAB       &kp Q            &kp W            &kp E              &kp R         &kp T        &kp Y    &kp U         &kp I               &kp O             &kp P                &kp BSPC
-&kp LEFT_GUI  &HML LEFT_GUI A  &HML LEFT_ALT S  &HML LEFT_SHIFT D  &HML LCTRL F  &kp G        &kp H    &HMR RCTRL J  &HMR RIGHT_SHIFT K  &HMR RIGHT_ALT L  &HMR RGUI SEMICOLON  &kp SQT
-&kp LSHFT     &kp Z            &kp X            &kp C              &kp V         &kp B        &kp N    &kp M         &kp COMMA           &kp DOT           &kp FSLH             &kp ESC
-                                                &mo 3              &mo 1         &kp SPACE    &kp RET  &mo 2         &mo 4
+&TabMod    &kp Q            &kp W            &kp E              &kp R         &kp T        &kp Z    &kp U         &kp I               &kp O             &kp P                &kp BSPC
+&mo 3      &HML LEFT_GUI A  &HML LEFT_ALT S  &HML LEFT_SHIFT D  &HML LCTRL F  &kp G        &kp H    &HMR RCTRL J  &HMR RIGHT_SHIFT K  &HMR RIGHT_ALT L  &HMR RGUI SEMICOLON  &kp SINGLE_QUOTE
+&kp LSHFT  &kp Y            &kp X            &kp C              &kp V         &kp B        &kp N    &kp M         &kp COMMA           &kp DOT           &kp FSLH             &kp ESC
+                                             &mo 2              &mo 1         &kp SPACE    &kp RET  &mo 1         &mo 2
             >;
         };
 
         nav {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-            // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-            // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
-
             display-name = "Nav";
             bindings = <
-&kp TAB     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6    &kp N7    &kp N8    &kp N9     &kp N0  &kp BSPC
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
-&kp LSHFT   &trans        &trans        &trans        &trans        &trans          &trans    &trans    &trans    &trans     &trans  &trans
-                                        &kp LGUI      &trans        &kp SPACE       &kp RET   &trans    &kp RALT
+&trans  &kp PAGE_UP  &kp BACKSPACE   &kp UP_ARROW  &kp DELETE    &kp PAGE_DOWN    &kp PERIOD    &kp N7               &kp N8          &kp N9                   &kp KP_MINUS            &trans
+&trans  &kp HOME     &kp LEFT_ARROW  &kp DOWN      &kp RIGHT     &kp END          &kp NUMBER_0  &HMR RCTRL NUMBER_4  &HMR RSHIFT N5  &HMR RIGHT_ALT NUMBER_6  &HMR RIGHT_GUI KP_PLUS  &trans
+&trans  &kp K_CUT    &kp K_COPY      &kp K_PASTE   &kp C_REPEAT  &kp K_UNDO       &kp COMMA     &kp NUMBER_1         &kp NUMBER_2    &kp NUMBER_3             &none                   &trans
+                                     &trans        &trans        &trans           &trans        &trans               &trans
             >;
         };
 
         symbol {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-            // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-            // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
-
             display-name = "symbol";
             bindings = <
-&kp TAB    &kp SQT          &kp LESS_THAN  &kp GREATER_THAN  &kp DOUBLE_QUOTES  &kp PERIOD    &kp AMPERSAND  &trans      &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp PERCENT   &kp BSPC
-&kp LCTRL  &kp EXCLAMATION  &kp MINUS      &kp PLUS          &kp EQUAL          &kp HASH      &kp PIPE       &kp COLON   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp QUESTION  &trans
-&kp LSHFT  &kp CARET        &kp SLASH      &kp ASTERISK      &kp BACKSLASH      &trans        &kp TILDE      &kp DOLLAR  &kp LBRC              &kp RBRC               &kp AT_SIGN   &trans
-                                           &kp LGUI          &trans             &kp SPACE     &kp RET        &trans      &kp RALT
-            >;
-        };
-
-        window {
-            display-name = "window";
-            bindings = <
-&kp TAB     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6    &kp N7    &kp N8    &kp N9     &kp N0  &kp BSPC
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
-&kp LSHFT   &trans        &trans        &trans        &trans        &trans          &trans    &trans    &trans    &trans     &trans  &trans
-                                        &kp LGUI      &trans        &kp SPACE       &kp RET   &trans    &kp RALT
+&trans  &kp AT                   &kp UNDERSCORE       &kp LEFT_BRACKET       &kp RIGHT_BRACKET              &kp CARET       &kp EXCLAMATION  &kp LESS_THAN                &kp GREATER_THAN              &kp EQUAL             &kp AMPERSAND         &trans
+&trans  &HML LEFT_GUI BACKSLASH  &HML LEFT_ALT SLASH  &HML LSHFT LEFT_BRACE  &HML LEFT_CONTROL RIGHT_BRACE  &kp ASTERISK    &kp QUESTION     &HMR RCTRL LEFT_PARENTHESIS  &HMR RSHFT RIGHT_PARENTHESIS  &HMR RIGHT_ALT MINUS  &HMR RIGHT_GUI COLON  &trans
+&trans  &kp HASH                 &kp DOLLAR           &kp PIPE               &kp TILDE                      &kp GRAVE       &kp PLUS         &kp PERCENT                  &kp DOUBLE_QUOTES             &kp SINGLE_QUOTE      &kp SEMI              &trans
+                                                      &trans                 &trans                         &trans          &trans           &trans                       &trans
             >;
         };
 
         media {
             display-name = "media";
             bindings = <
-&kp TAB     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6    &kp N7    &kp N8    &kp N9     &kp N0  &kp BSPC
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT  &trans  &trans
-&kp LSHFT   &trans        &trans        &trans        &trans        &trans          &trans    &trans    &trans    &trans     &trans  &trans
-                                        &kp LGUI      &trans        &kp SPACE       &kp RET   &trans    &kp RALT
+&trans  &trans  &trans          &trans            &kp C_BRIGHTNESS_INC  &kp C_VOL_UP         &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans          &trans            &kp C_BRIGHTNESS_DEC  &kp C_VOLUME_DOWN    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &kp C_PREVIOUS  &kp C_PLAY_PAUSE  &kp C_NEXT            &kp C_MUTE           &trans  &trans  &trans  &trans  &trans  &trans
+                                &trans            &trans                &trans               &trans  &trans  &trans
             >;
         };
     };
-
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-
-        lowerAndRaise {
-            if-layers = <1 2>;
-            then-layer = <3>;
-        };
-    };
+    
 };
