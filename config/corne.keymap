@@ -158,7 +158,7 @@
             display-name = "Base";
             bindings = <
 &TabMod    &kp Q            &kp W            &kp E              &kp R         &kp T        &kp Z    &kp U         &kp I               &kp O             &kp P                &kp BSPC
-&mo 3      &HML LEFT_GUI A  &HML LEFT_ALT S  &HML LEFT_SHIFT D  &HML LCTRL F  &kp G        &kp H    &HMR RCTRL J  &HMR RIGHT_SHIFT K  &HMR RIGHT_ALT L  &HMR RGUI SEMICOLON  &kp SINGLE_QUOTE
+&mo 4      &HML LEFT_GUI A  &HML LEFT_ALT S  &HML LEFT_SHIFT D  &HML LCTRL F  &kp G        &kp H    &HMR RCTRL J  &HMR RIGHT_SHIFT K  &HMR RIGHT_ALT L  &HMR RGUI SEMICOLON  &kp SINGLE_QUOTE
 &kp LSHFT  &kp Y            &kp X            &kp C              &kp V         &kp B        &kp N    &kp M         &kp COMMA           &kp DOT           &kp FSLH             &kp ESC
                                              &mo 2              &mo 1         &kp SPACE    &kp RET  &mo 1         &mo 2
             >;
@@ -187,10 +187,19 @@
         media {
             display-name = "media";
             bindings = <
-&trans  &trans   &trans          &macro_euro       &kp C_BRIGHTNESS_INC  &kp C_VOL_UP         &macro_sz  &mod_ue  &trans  &mod_oe  &trans  &trans
-&trans  &mod_ae  &trans          &trans            &kp C_BRIGHTNESS_DEC  &kp C_VOLUME_DOWN    &trans     &trans   &trans  &trans   &trans  &trans
-&trans  &trans   &kp C_PREVIOUS  &kp C_PLAY_PAUSE  &kp C_NEXT            &kp C_MUTE           &trans     &trans   &trans  &trans   &trans  &trans
-                                 &trans            &trans                &trans               &trans     &trans   &trans
+&trans  &trans   &trans          &macro_euro       &kp C_BRIGHTNESS_INC  &kp C_VOL_UP         &macro_sz        &mod_ue  &trans  &mod_oe  &trans  &trans
+&trans  &mod_ae  &trans          &trans            &kp C_BRIGHTNESS_DEC  &kp C_VOLUME_DOWN    &kp PRINTSCREEN  &trans   &trans  &trans   &trans  &trans
+&trans  &trans   &kp C_PREVIOUS  &kp C_PLAY_PAUSE  &kp C_NEXT            &kp C_MUTE           &trans           &trans   &trans  &trans   &trans  &trans
+                                 &trans            &trans                &trans               &trans           &trans   &trans
+            >;
+        };
+
+        f-keys {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans    &kp F1  &kp F2   &kp F3   &kp F4   &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &kp F5  &kp F6   &kp F7   &kp F8   &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &kp F9  &kp F10  &kp F11  &kp F12  &trans  &trans
+                        &trans  &trans  &trans    &trans  &trans   &trans
             >;
         };
     };
